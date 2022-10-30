@@ -1,0 +1,91 @@
+-- Create Database
+
+CREATE TABLE Starbucks_Coffee (
+    id INTEGER PRIMARY KEY,
+    name TEXT,
+    calories INTEGER,
+    time INTEGER,
+    caffeine_level TEXT
+);
+
+INSERT INTO Starbucks_Coffee 
+    Values (1, 'coldbrew', 100, 120, 'low');
+INSERT INTO Starbucks_Coffee 
+    Values (2, 'cappuccino', 140 ,350, 'low');
+INSERT INTO Starbucks_Coffee 
+    Values (3, 'saltedcaramel', 180 , 250, 'med');
+INSERT INTO Starbucks_Coffee 
+    Values (4, 'pumpkinlatte', 400 ,100, 'med');
+INSERT INTO Starbucks_Coffee 
+    Values (5, 'blackcoffee', 80 ,90, 'high');
+INSERT INTO Starbucks_Coffee 
+    Values (6, 'pinkdrink', 840 ,650, 'med');
+INSERT INTO Starbucks_Coffee 
+    Values (7, 'espresso', 75 ,120, 'med');
+INSERT INTO Starbucks_Coffee 
+    Values (8, 'whitemocha', 660 ,450, 'high');
+INSERT INTO Starbucks_Coffee 
+    Values (9, 'pepperminttea', 110 ,210, 'low');
+    
+-- Finding AVG, MIN, and Max    
+ 
+SELECT 
+    *, AVG(calories)
+FROM
+    starbucks_coffee
+GROUP BY caffeine_level;
+
+SELECT 
+    *, MIN(time)
+FROM
+    starbucks_coffee
+GROUP BY caffeine_level;
+
+SELECT 
+    *, MAX(calories)
+FROM
+    starbucks_coffee
+GROUP BY caffeine_level;
+
+-- Use of aggregrate functions paried with grouping and filtering of data.
+
+SELECT 
+    *, AVG(calories)
+FROM
+    starbucks_coffee
+GROUP BY caffeine_level
+HAVING calories > 300;
+
+-- Grouping data values that do not exist yet using CASE statements
+
+SELECT 
+    *,
+    CASE
+        WHEN calories > 500 THEN 'high_calories'
+        WHEN calories > 300 THEN 'avg_calories'
+        ELSE 'low calories'
+    END 'calorie_level'
+FROM
+    starbucks_coffee;
+
+-- Filtering data using AND/OR
+
+SELECT 
+    *
+FROM
+    starbucks_coffee
+WHERE
+    time < 300 AND calories > 350;
+
+SELECT 
+    *
+FROM
+    starbucks_coffee
+WHERE
+    caffeine_level = 'high'
+        OR calories > 650;
+
+
+    
+    
+    
