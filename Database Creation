@@ -1,0 +1,11 @@
+-- Actor Database with multiple tables that relate
+Create Table actors (id integer primary key autoincrement, name text, movie text, awards integer);
+Insert into actors(name, movie, awards) VALUES ('tom_cruise', 'top_gun', '32');
+Insert into actors(name, movie, awards) VALUES ('adam_sandler', 'happy', '24');
+Insert into actors(name, movie, awards) VALUES ('kevin_hart', 'jumanji', '16');
+Insert into actors(name, movie, awards) VALUES ('jennifer_lopez', 'hustlers', '30');
+
+create table actor_friends (id integer primary key autoincrement, friend1 integer, friend2 integer);
+
+INSERT INTO actor_friends (friend1, friend2) values (1, 4);
+INSERT INTO actor_friends (friend1, friend2) values (2,3);
