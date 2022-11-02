@@ -13,3 +13,12 @@ join persons a
 on friends.person1_id  = a.id
 join persons b
 on friends.person2_id = b.id;
+
+-- multiple self joins
+
+select a.name, b.name
+from actor_friends 
+join actors a
+on actor_friends.friend1 = a.id
+join actors b
+on actor_friends.friend2 = b.id;
