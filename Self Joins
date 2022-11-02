@@ -1,0 +1,6 @@
+-- self join
+
+select movies.title, sequels.title as sequels_title
+from movies 
+left join movies sequels
+on sequels.id = movies.sequel_id;
