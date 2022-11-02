@@ -1,6 +1,15 @@
--- self join
+-- single self join
 
 select movies.title, sequels.title as sequels_title
 from movies 
 left join movies sequels
 on sequels.id = movies.sequel_id;
+
+-- multiple self joins
+
+select a.fullname, b.fullname
+from friends
+join persons a
+on friends.person1_id  = a.id
+join persons b
+on friends.person2_id = b.id;
